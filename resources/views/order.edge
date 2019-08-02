@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <li></li>
+    <script>
+        fetch("http://localhost:3333/orderquery",{
+            method:"POST",
+            headers:new Headers({
+                'Content-Type':'application/x-www-form-urlencoded'
+            }),
+            body:"out_trade_no=A101010101&_csrf={{csrfToken}}"
+        })
+        .then((response)=>response.json())
+        .then(result=>{
+            document.querySelector('li').innerHTML=result.trade_state_desc
+        })
+    </script>
+</body>
+</html>
